@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "125776652848",
+    "project_id": "sdgp-teamcric",
+    "storage_bucket": "sdgp-teamcric.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125776652848:android:f61a3f60173b86ff38dbf5",
+        "android_client_info": {
+          "package_name": "com.example.teamcric"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125776652848-i7ser9fv1seffgtl5tptmcu1cckvgsb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRZqq1YEFcAPv8yXtDtD07-nwCz_hHx0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125776652848-i7ser9fv1seffgtl5tptmcu1cckvgsb0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
