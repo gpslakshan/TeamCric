@@ -49,8 +49,12 @@ class TeamsScreen extends StatelessWidget {
 
   Widget buildTeam(Team team, BuildContext context) => InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => PlayersPage(team.name)));
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PlayersPage(team.name, team.imageUrl),
+            ),
+          );
         },
         child: Container(
           decoration: BoxDecoration(
