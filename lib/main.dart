@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'widgets/more_screen.dart';
 import 'widgets/fixtures_screen.dart';
-import 'widgets/playing11_predicions.dart';
+import 'widgets/squad_predicions.dart';
 import 'widgets/teams_screen.dart';
 
 Future main() async {
@@ -78,8 +78,8 @@ class _HomepageState extends State<Homepage> {
             label: 'Teams',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.description_rounded),
-            label: 'Playing11',
+            icon: Icon(Icons.align_vertical_bottom_outlined),
+            label: 'Performance',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.more_horiz),
