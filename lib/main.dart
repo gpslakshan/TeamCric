@@ -67,18 +67,18 @@ class _HomepageState extends State<Homepage> {
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white70,
         currentIndex: currentIndex,
-        onTap: (value) => setState(() => currentIndex = value),
+        onTap: (index) => setState(() => currentIndex = index),
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people_outline_rounded),
+            icon: Icon(Icons.people),
             label: 'Teams',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.description_rounded),
+            icon: Icon(Icons.sports_cricket),
             label: 'Playing11',
           ),
           BottomNavigationBarItem(
