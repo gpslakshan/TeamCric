@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:teamcric/widgets/result.dart';
 
 class Playing11PredictionScreen extends StatefulWidget {
   const Playing11PredictionScreen({
@@ -178,7 +179,15 @@ class _Playing11PredictionScreenState extends State<Playing11PredictionScreen>
                         height: 50,
                         margin: EdgeInsets.symmetric(horizontal: 80),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Result(
+                                    valueTeam!, valueOpponent!, valueVenue!),
+                              ),
+                            );
+                          },
                           child: Text('Predict'),
                         ),
                       )
