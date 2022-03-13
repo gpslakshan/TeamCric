@@ -31,70 +31,109 @@ class _ResultState extends State<Result> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height,
-          child: StreamBuilder<List<Player>>(
-            stream: readPlayers(),
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return Text('Something went wrong! ${snapshot.error}');
-              } else if (snapshot.hasData) {
-                for (int i = 0; i < snapshot.data!.length; i++) {
-                  if (snapshot.data![i].teamName == widget.teamName &&
-                      snapshot.data![i].role != 'BOWL') {
-                    players.add(snapshot.data![i]);
-                  }
-                }
-                print(players);
-                print(players.length);
-                return FutureBuilder(
-                  future: getPerformance(),
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.data == null) {
-                      return Container(
-                        child: Center(
-                          child: Text("Loading.."),
-                        ),
-                      );
-                    } else {
-                      return Container(
-                        height: MediaQuery.of(context).size.height,
-                        child: ListView.builder(
-                          itemCount: snapshot.data.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return ListTile(
-                              title: Text(players[index].name),
-                              leading: Container(
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image:
-                                        NetworkImage(players[index].imageUrl),
-                                  ),
-                                ),
-                                height: 100,
-                                width: 50,
-                              ),
-                              subtitle: Text(
-                                players[index].role,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              trailing: Text(snapshot.data[index]),
-                            );
-                          },
-                          primary: false,
-                          shrinkWrap: true,
-                        ),
-                      );
+          padding: EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                widget.teamName,
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                'Performance Prediction Results',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              StreamBuilder<List<Player>>(
+                stream: readPlayers(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text('Something went wrong! ${snapshot.error}');
+                  } else if (snapshot.hasData) {
+                    for (int i = 0; i < snapshot.data!.length; i++) {
+                      if (snapshot.data![i].teamName == widget.teamName &&
+                          snapshot.data![i].role != 'BOWL') {
+                        players.add(snapshot.data![i]);
+                      }
                     }
-                  },
-                );
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
+                    print(players);
+                    print(players.length);
+                    return FutureBuilder(
+                      future: getPerformance(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.data == null) {
+                          return Container(
+                            child: Center(
+                              child: Text("Loading.."),
+                            ),
+                          );
+                        } else {
+                          return Container(
+                            height: MediaQuery.of(context).size.height,
+                            child: ListView.builder(
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return ListTile(
+                                  title: Text(
+                                    players[index].name,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  leading: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                            players[index].imageUrl),
+                                      ),
+                                    ),
+                                    height: 100,
+                                    width: 50,
+                                  ),
+                                  subtitle: Text(
+                                    players[index].role,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  trailing: Text(
+                                    snapshot.data[index],
+                                    style: TextStyle(
+                                      color: snapshot.data[index] == 'Low'
+                                          ? Colors.red
+                                          : Colors.teal,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                );
+                              },
+                              primary: false,
+                              shrinkWrap: true,
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
+            ],
           ),
         ),
       ),
@@ -157,18 +196,6 @@ class _ResultState extends State<Result> {
   }
 
   Future<List<String>> getPerformance() async {
-    // var body = [
-    //   {
-    //     'player_id': int.parse(player.battingId),
-    //     'opp_id': getOppId(widget.oppName),
-    //     'venue_id': getVenueId(widget.venueName)
-    //   }
-    // ];
-    // print(body);
-    // setState(() {
-    //   output = resp!.toString();
-    // });
-
     List<String> performances = [];
     for (int i = 0; i < players.length; i++) {
       var body = [
