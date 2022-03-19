@@ -61,6 +61,26 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
       body: screens[currentIndex],
+      
+      drawer: Drawer(
+        child: ListView(
+          padding: const EdgeInsets.all(0),
+          children: <Widget>[
+            DrawerHeader(
+                child: Text('',
+                  style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+                decoration:BoxDecoration(color:Colors.teal),
+            ),
+
+
+
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.teal,
