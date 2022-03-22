@@ -160,39 +160,32 @@ class _ResultState extends State<Result> {
     return null;
   }
 
-  int getOppId(String value) {
-    final teams = [
-      'West Indies',
-      'New Zealand',
-      'Pakistan',
-      'Australia',
-      'England',
-      'Sri Lanka',
-      'Bangladesh',
-      'South Africa',
-      'India'
-    ];
-    var index = teams.indexOf(value);
-
-    List<int> oppIds = [8, 4, 5, 0, 2, 7, 1, 6, 3];
-    final oppId = oppIds[index];
-    return oppId;
+  int? getOppId(String opponentName) {
+    final teams = {
+      'West Indies': 8,
+      'New Zealand': 4,
+      'Pakistan': 5,
+      'Australia': 0,
+      'England': 2,
+      'Sri Lanka': 7,
+      'Bangladesh': 1,
+      'South Africa': 6,
+      'India': 3
+    };
+    return teams[opponentName];
   }
 
-  getVenueId(String venueName) {
-    final venueList = [
-      "Bay Oval, Mount Maunganui",
-      "Westpac Trust Stadium",
-      "Eden Park",
-      "Bay Oval",
-      "Sydney Cricket Ground",
-      "Bellerive Oval",
-      "Melbourne Cricket Ground",
-    ];
-    var index = venueList.indexOf(venueName);
-    List<int> venueIds = [2, 51, 13, 1, 42, 3, 26];
-    final venueId = venueIds[index];
-    return venueId;
+  int? getVenueId(String venueName) {
+    final venues = {
+      "Bay Oval, Mount Maunganui": 2,
+      "Westpac Trust Stadium": 51,
+      "Eden Park": 13,
+      "Bay Oval": 1,
+      "Sydney Cricket Ground": 42,
+      "Bellerive Oval": 3,
+      "Melbourne Cricket Ground": 26
+    };
+    return venues[venueName];
   }
 
   Future<List<String>> getPerformance() async {
