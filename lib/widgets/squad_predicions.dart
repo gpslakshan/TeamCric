@@ -94,6 +94,8 @@ class _Playing11PredictionScreenState extends State<Playing11PredictionScreen>
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+
+                      //Batting Tab
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 10),
                         padding:
@@ -193,7 +195,120 @@ class _Playing11PredictionScreenState extends State<Playing11PredictionScreen>
                       )
                     ],
                   ),
-                  Center(child: Text('Bowling')),
+
+                  //Bowling Tab
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Team Name',
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            hint: Text('Select Team'),
+                            value: valueTeam,
+                            isExpanded: true,
+                            items: teams.map(buildTeamMenuItem).toList(),
+                            onChanged: (value) => setState(() {
+                              valueTeam = value!;
+                            }),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Opponent Name',
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            hint: Text('Select Opponent'),
+                            value: valueOpponent,
+                            isExpanded: true,
+                            items: teams.map(buildTeamMenuItem).toList(),
+                            onChanged: (value) => setState(() {
+                              valueOpponent = value!;
+                            }),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Ground Name',
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            hint: Text('Select Venue'),
+                            value: valueVenue,
+                            isExpanded: true,
+                            items: venues.map(buildVenueMenuItem).toList(),
+                            onChanged: (value) => setState(() {
+                              valueVenue = value!;
+                            }),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Container(
+                        width: 200,
+                        height: 50,
+                        margin: EdgeInsets.symmetric(horizontal: 80),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Result(
+                                    valueTeam!, valueOpponent!, valueVenue!),
+                              ),
+                            );
+                          },
+                          child: Text('Predict'),
+                        ),
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),

@@ -66,21 +66,25 @@ class _HomepageState extends State<Homepage> {
         child: ListView(
           padding: const EdgeInsets.all(0),
           children: <Widget>[
-            DrawerHeader(
-                child: Text('',
-                  style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold
-                  ),
+            UserAccountsDrawerHeader(
+                accountName: Text(''),
+                accountEmail: Text(''),
+                currentAccountPicture: CircleAvatar(
+                   backgroundImage: NetworkImage(
+                       ""),
                 ),
-                decoration:BoxDecoration(color:Colors.teal),
             ),
-
-
+            // ListTile(
+            //   leading: Icons(Icons.person),
+            //   title: Text(email),
+            //
+            // )
 
           ],
         ),
       ),
+
+
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.teal,
