@@ -95,7 +95,7 @@ class _Playing11PredictionScreenState extends State<Playing11PredictionScreen>
                         ),
                       ),
 
-                      //Batting Tab
+                      //Batting Tab+
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 10),
                         padding:

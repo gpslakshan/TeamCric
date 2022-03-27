@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'widgets/more_screen.dart';
+import 'widgets/upcoming_matches.dart';
 import 'widgets/fixtures_screen.dart';
 import 'widgets/squad_predicions.dart';
 import 'widgets/teams_screen.dart';
@@ -44,7 +44,7 @@ class _HomepageState extends State<Homepage> {
     FixtureScreen(),
     TeamsScreen(),
     Playing11PredictionScreen(),
-    MoreScreen(),
+    UpcomingMatches(),
   ];
 
   @override
@@ -74,42 +74,39 @@ class _HomepageState extends State<Homepage> {
                        ""),
                 ),
             ),
-            // ListTile(
-            //   leading: Icons(Icons.person),
-            //   title: Text(email),
-            //
-            // )
-
           ],
         ),
       ),
 
 
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.teal,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
-        currentIndex: currentIndex,
-        onTap: (value) => setState(() => currentIndex = value),
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people_outline_rounded),
-            label: 'Teams',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.align_vertical_bottom_outlined),
-            label: 'Performance',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.more_horiz),
-            label: 'More',
-          ),
-        ],
+      bottomNavigationBar: SizedBox(
+        height: 70,
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.teal,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white70,
+          currentIndex: currentIndex,
+          onTap: (value) => setState(() => currentIndex = value),
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people_outline_rounded),
+              label: 'Teams',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.align_vertical_bottom_outlined),
+              label: 'Performance',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today),
+              label: 'Upcoming\n  matches',
+            ),
+          ],
+        ),
       ),
     );
   }

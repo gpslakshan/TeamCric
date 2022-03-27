@@ -74,7 +74,7 @@ class _FixtureScreenState extends State<FixtureScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 235,
+                    height: 220,
                     child: StreamBuilder<List<News>>(
                       stream: readNews(),
                       builder: (context, snapshot) {
